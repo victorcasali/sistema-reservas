@@ -9,5 +9,10 @@ def main():
     for m in todas_mesas:
         m.mostrar_mesa()
 
+    pessoas=int(input('Quantas pessoas vão comer?'))
+    for m in todas_mesas:
+        if m.cabe_mesa(pessoas):
+            m.mostrar_mesa()
+
 if __name__ == "__main__":
     main()
