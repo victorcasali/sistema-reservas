@@ -1,5 +1,8 @@
 from cliente import Cliente
 from mesa import Mesa
+from reserva import Reserva
+
+
 def main():
     mesa1=Mesa(1,2)
     mesa2=Mesa(2,4)
@@ -8,6 +11,12 @@ def main():
 
     cliente1=Cliente("Mauricio",980878846)
     cliente2=Cliente("Mauricio",976543212)
+
+    reserva1=Reserva(cliente1,mesa1,"23/10/1996","20:00",6)
+    reserva1.mostrar_reserva()
+    print("-"*50)
+    reserva2=Reserva(cliente2,mesa2,"21/10/1996","16:00",4)
+    reserva2.mostrar_reserva()
 
     todos_clientes=[cliente1,cliente2]
 
