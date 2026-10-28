@@ -1,9 +1,11 @@
 from cliente import Cliente
 from mesa import Mesa
 from reserva import Reserva
+from restaurante import Restaurante
 
 
 def main():
+
     mesa1=Mesa(1,2)
     mesa2=Mesa(2,4)
     mesa3=Mesa(3,6)

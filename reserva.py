@@ -1,5 +1,6 @@
 class Reserva:
     proximo_numero=1
+    horarios_disponiveis=["12:00","14:00","16:00","18:00","20:00"]
     def __init__(self,cliente,mesa,data,horario,qtd_de_pessoas):
         self.numero=Reserva.proximo_numero
         Reserva.proximo_numero+=1
