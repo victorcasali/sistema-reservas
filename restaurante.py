@@ -1,4 +1,5 @@
 import reserva
+from mesa import Mesa
 from reserva import Reserva
 from datetime import date, datetime
 
@@ -11,7 +12,13 @@ class Restaurante:
         self.reservas=[]
 
     def adicionar_mesa(self,numero,quantidade_de_cliente):
-
+        for mesa_existente in self.mesas:
+            if mesa_existente.numero == numero:
+                print("Essa mesa já existe")
+                return None
+        mesa=Mesa(numero,quantidade_de_cliente)
+        self.mesas.append(mesa)
+        return mesa
 
     def criar_reserva(self,cliente,mesa,data,horario,qtd_de_pessoas):
         data=datetime.strptime(data,"%d/%m/%Y").date()

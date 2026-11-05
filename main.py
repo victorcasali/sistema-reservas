@@ -6,8 +6,8 @@ def main():
     restaurante=Restaurante()
 
     cliente1=Cliente("Carlos","21980878846")
-    mesa1=Mesa(1,5)
-
+    #mesa1=Mesa(1,5)
+    mesa1=restaurante.adicionar_mesa(1,5)
     r1=restaurante.criar_reserva(cliente1,mesa2,"10/10/2026","20:00",2)
 
     r2=restaurante.criar_reserva(cliente1,mesa1,"10/11/2026","20:00",2)
