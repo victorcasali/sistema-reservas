@@ -3,21 +3,18 @@ from mesa import Mesa
 from restaurante import Restaurante
 
 def main():
-    restaurante=Restaurante()
+    restaurante = Restaurante()
 
-    cliente1=Cliente("Carlos","21980878846")
-    #mesa1=Mesa(1,5)
-    mesa1=restaurante.adicionar_mesa(1,5)
-    r1=restaurante.criar_reserva(cliente1,mesa2,"10/10/2026","20:00",2)
+    c1 = restaurante.adicionar_cliente("Carlos", "21980878846")  # deve ser aceito
+    c2 = restaurante.adicionar_cliente("", "21980878846")  # nome vazio: recusa
+    c3 = restaurante.adicionar_cliente("Ana", "")  # telefone vazio: recusa
+    c4 = restaurante.adicionar_cliente("   ", "21980878846")  # só espaços: recusa
+    c5 = restaurante.adicionar_cliente("Carlos", "21999990000")  # mesmo nome, outro telefone: aceito
 
-    r2=restaurante.criar_reserva(cliente1,mesa1,"10/11/2026","20:00",2)
+    print(c2, c3, c4)
 
-    r3=restaurante.criar_reserva(cliente1,mesa1,"10/11/2026","21:00",2)
-
-    print(r1)
-    print(r2)
-    print(r3)
-
-    print()
+    print("Clientes cadastrados:")
+    for c in restaurante.clientes:
+        c.mostrar_cliente()
 if __name__ == "__main__":
     main()

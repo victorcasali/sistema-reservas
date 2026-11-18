@@ -1,4 +1,5 @@
 import reserva
+from cliente import Cliente
 from mesa import Mesa
 from reserva import Reserva
 from datetime import date, datetime
@@ -20,6 +21,14 @@ class Restaurante:
         self.mesas.append(mesa)
         return mesa
 
+    def adicionar_cliente(self,nome,telefone):  #Crie o métdo adicionar_cliente (recusa nome ou telefone vazios, guarda em self.clientes e devolve o cliente).
+        if not nome.strip() or not telefone.strip():
+            print("Entrada invalida.")
+            return None
+        cliente = Cliente(nome, telefone)
+        self.clientes.append(cliente)
+        return cliente
+
     def criar_reserva(self,cliente,mesa,data,horario,qtd_de_pessoas):
         data=datetime.strptime(data,"%d/%m/%Y").date()
         if not mesa.cabe_mesa(qtd_de_pessoas):
@@ -30,6 +39,9 @@ class Restaurante:
             return None
         if data < data_atual:
             print(f"Essa data já passou. Digite uma data valida!")
+            return None
+        if mesa not in self.mesas:
+            print(f"Essa mesa não existe!")
             return None
         for reserva_existente in self.reservas:
             if reserva_existente.mesa.numero == mesa.numero and reserva_existente.data == data and reserva_existente.horario == horario:
