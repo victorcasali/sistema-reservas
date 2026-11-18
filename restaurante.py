@@ -57,3 +57,9 @@ class Restaurante:
             return
         for mesa in self.mesas:
             Mesa.mostrar_mesa(mesa)
+
+    def buscar_reserva(self,numero):
+        for reserva in self.reservas:
+            if reserva.numero == numero:
+                return reserva
+        return None
