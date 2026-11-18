@@ -3,7 +3,7 @@ from datetime import datetime,date
 class Reserva:
     proximo_numero=1
     horarios_disponiveis=["12:00","14:00","16:00","18:00","20:00","21:00"]
-    def __init__(self,cliente,mesa,data,horario,qtd_de_pessoas):
+    def __init__(self,cliente,mesa,data,horario,qtd_de_pessoas):  # Cria o méto-do construtor (gera um número sequencial único para a reserva e armazena cliente, mesa, data, horário e quantidade de pessoas).
         self.numero=Reserva.proximo_numero
         Reserva.proximo_numero+=1
         self.cliente=cliente
@@ -12,7 +12,7 @@ class Reserva:
         self.horario=horario
         self.qtd_de_pessoas=qtd_de_pessoas
 
-    def mostrar_reserva(self):
+    def mostrar_reserva(self):  # Cria o méto-do mostrar_reserva (exibe no terminal todos os detalhes formatados da reserva).
         print(f"Reserva:{self.numero}\n"
               f"Nome:{self.cliente.nome}\n"
               f"Mesa:{self.mesa.numero}\n"

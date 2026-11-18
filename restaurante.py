@@ -12,7 +12,7 @@ class Restaurante:
         self.clientes=[]
         self.reservas=[]
 
-    def adicionar_mesa(self,numero,quantidade_de_cliente):
+    def adicionar_mesa(self,numero,quantidade_de_cliente):  # Cria o méto-do. adicionar_mesa (impede mesas duplicadas pelo número, cadastra a mesa em self.mesas e a devolve).
         for mesa_existente in self.mesas:
             if mesa_existente.numero == numero:
                 print("Essa mesa já existe")
@@ -21,7 +21,7 @@ class Restaurante:
         self.mesas.append(mesa)
         return mesa
 
-    def adicionar_cliente(self,nome,telefone):  #Crie o métdo adicionar_cliente (recusa nome ou telefone vazios, guarda em self.clientes e devolve o cliente).
+    def adicionar_cliente(self,nome,telefone):  # Crie o méto-do adicionar_cliente (recusa nome ou telefone vazios, guarda em self.clientes e devolve o cliente).
         if not nome.strip() or not telefone.strip():
             print("Entrada invalida.")
             return None
@@ -29,7 +29,7 @@ class Restaurante:
         self.clientes.append(cliente)
         return cliente
 
-    def criar_reserva(self,cliente,mesa,data,horario,qtd_de_pessoas):
+    def criar_reserva(self,cliente,mesa,data,horario,qtd_de_pessoas):  # Cria o méto-do criar_reserva (valida capacidade da mesa, horários, datas passadas, existência da mesa e duplicidade, salvando em self.reservas).
         data=datetime.strptime(data,"%d/%m/%Y").date()
         if not mesa.cabe_mesa(qtd_de_pessoas):
             print("A quantidade de pessoas excede a capacidade da mesa")
@@ -50,3 +50,10 @@ class Restaurante:
         nova_reserva=Reserva(cliente,mesa,data,horario, qtd_de_pessoas)
         self.reservas.append(nova_reserva)
         return nova_reserva
+
+    def listar_mesas(self):# Cria o méto-do listar_mesas (Criar uma lista visivel das mesas cadastradas).
+        if not self.mesas:
+            print("Nenhuma mesa cadastrada.")
+            return
+        for mesa in self.mesas:
+            Mesa.mostrar_mesa(mesa)

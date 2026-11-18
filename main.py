@@ -5,16 +5,15 @@ from restaurante import Restaurante
 def main():
     restaurante = Restaurante()
 
-    c1 = restaurante.adicionar_cliente("Carlos", "21980878846")  # deve ser aceito
-    c2 = restaurante.adicionar_cliente("", "21980878846")  # nome vazio: recusa
-    c3 = restaurante.adicionar_cliente("Ana", "")  # telefone vazio: recusa
-    c4 = restaurante.adicionar_cliente("   ", "21980878846")  # só espaços: recusa
-    c5 = restaurante.adicionar_cliente("Carlos", "21999990000")  # mesmo nome, outro telefone: aceito
+    restaurante.listar_mesas()  # lista vazia: deve avisar
 
-    print(c2, c3, c4)
+    restaurante.adicionar_mesa(1, 5)
+    restaurante.adicionar_mesa(2, 4)
+    restaurante.adicionar_mesa(3, 6)
+    restaurante.adicionar_mesa(2, 8)  # número repetido: deve recusar
 
-    print("Clientes cadastrados:")
-    for c in restaurante.clientes:
-        c.mostrar_cliente()
+    print("-" * 30)
+    restaurante.listar_mesas()  # deve mostrar as três mesas
+
 if __name__ == "__main__":
     main()
