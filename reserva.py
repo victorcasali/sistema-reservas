@@ -13,9 +13,10 @@ class Reserva:
         self.qtd_de_pessoas=qtd_de_pessoas
 
     def mostrar_reserva(self):  # Cria o méto-do mostrar_reserva (exibe no terminal todos os detalhes formatados da reserva).
+        data_formatada = self.data.strftime("%d/%m/%Y")
         print(f"Reserva:{self.numero}\n"
               f"Nome:{self.cliente.nome}\n"
               f"Mesa:{self.mesa.numero}\n"
-              f"Data:{self.data}\n"
+              f"Data:{data_formatada}\n"
               f"Horario:{self.horario}\n"
               f"Qtd de pessoas:{self.qtd_de_pessoas}")

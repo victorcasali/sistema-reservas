@@ -6,18 +6,20 @@ def main():
     restaurante = Restaurante()
 
     mesa1 = restaurante.adicionar_mesa(1, 5)
+    mesa2 = restaurante.adicionar_mesa(2, 4)
     cliente1 = restaurante.adicionar_cliente("Carlos", "21980878846")
 
     restaurante.criar_reserva(cliente1, mesa1, "10/12/2026", "20:00", 2)
-    restaurante.criar_reserva(cliente1, mesa1, "10/12/2026", "21:00", 3)
+    restaurante.criar_reserva(cliente1, mesa2, "10/12/2026", "12:00", 3)
+    restaurante.criar_reserva(cliente1, mesa1, "11/12/2026", "20:00", 2)
 
-    print(restaurante.cancelar_reserva(1))     # existe: deve dar True
-    print(restaurante.cancelar_reserva(99))    # não existe: mensagem + False
-    print(restaurante.buscar_reserva(1))       # já cancelada: deve dar None
-    print(len(restaurante.reservas))           # sobrou só a nº 2: deve dar 1
+    do_dia = restaurante.reserva_do_dia("10/12/2026")
+    print(len(do_dia))
+    for r in do_dia:
+        r.mostrar_reserva()
+        print("-" * 30)
 
-    nova = restaurante.criar_reserva(cliente1, mesa1, "11/12/2026", "20:00", 2)
-    print(nova.numero)
+    print(len(restaurante.reserva_do_dia("15/12/2026")))
 
 if __name__ == "__main__":
     main()

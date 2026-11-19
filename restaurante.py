@@ -58,13 +58,13 @@ class Restaurante:
         for mesa in self.mesas:
             Mesa.mostrar_mesa(mesa)
 
-    def buscar_reserva(self,numero):
+    def buscar_reserva(self,numero): # Cria o méto-do buscar_reserva (Procura e retorna uma reserva pelo número informado).
         for reserva in self.reservas:
             if reserva.numero == numero:
                 return reserva
         return None
 
-    def cancelar_reserva(self,numero):
+    def cancelar_reserva(self,numero):# Cria o méto-do cancelar_reserva (Localiza e remove uma reserva existente pelo número).
         reserva=self.buscar_reserva(numero)
 
         if reserva is None:
@@ -74,3 +74,11 @@ class Restaurante:
             self.reservas.remove(reserva)
             return True
 
+    def reserva_do_dia(self,data):
+        data=datetime.strptime(data,"%d/%m/%Y").date()
+        reservas_do_dia=[]
+
+        for reser in self.reservas:
+            if reser.data == data:
+                reservas_do_dia.append(reser)
+        return reservas_do_dia
