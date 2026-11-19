@@ -63,3 +63,14 @@ class Restaurante:
             if reserva.numero == numero:
                 return reserva
         return None
+
+    def cancelar_reserva(self,numero):
+        reserva=self.buscar_reserva(numero)
+
+        if reserva is None:
+            print("Essa reserva não existe")
+            return False
+        else:
+            self.reservas.remove(reserva)
+            return True
+

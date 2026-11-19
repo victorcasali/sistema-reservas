@@ -11,13 +11,13 @@ def main():
     restaurante.criar_reserva(cliente1, mesa1, "10/12/2026", "20:00", 2)
     restaurante.criar_reserva(cliente1, mesa1, "10/12/2026", "21:00", 3)
 
-    for numero in [1, 2, 99]:
-        r = restaurante.buscar_reserva(numero)
-        if r is not None:
-            r.mostrar_reserva()
-        else:
-            print(f"Reserva {numero} não encontrada.")
-        print("-" * 30)
+    print(restaurante.cancelar_reserva(1))     # existe: deve dar True
+    print(restaurante.cancelar_reserva(99))    # não existe: mensagem + False
+    print(restaurante.buscar_reserva(1))       # já cancelada: deve dar None
+    print(len(restaurante.reservas))           # sobrou só a nº 2: deve dar 1
+
+    nova = restaurante.criar_reserva(cliente1, mesa1, "11/12/2026", "20:00", 2)
+    print(nova.numero)
 
 if __name__ == "__main__":
     main()
